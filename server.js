@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: 'Omni-Directional-Robot',
   cookie: {
     // Stored in milliseconds
     maxAge: 1 * 24 * 60 * 60 * 1000, // expires after 1 day
