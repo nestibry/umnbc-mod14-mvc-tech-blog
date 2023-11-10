@@ -10,6 +10,21 @@ router.get('/category', async (req, res) => {
     try {
         const data = await Category.findAll({
             include: [{ model: Post }]
+            // include: [{ model: Post }, {model: Comment, through: Post, as:'comment'}]
+        });
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/post', async (req, res) => {
+    // find all categories
+    // be sure to include its associated Products
+    try {
+        const data = await Post.findAll({
+            include: [{ model: Category }, {model: User}]
+            // include: [{ model: Post }, {model: Comment, through: Post, as:'comment'}]
         });
         res.status(200).json(data);
     } catch (err) {
