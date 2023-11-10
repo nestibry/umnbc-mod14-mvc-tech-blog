@@ -1,7 +1,7 @@
 const User = require('./User');
+const Category = require('./Category');
 const Post = require('./Post');
 const Comment = require('./Comment');
-const Category = require('./Category');
 
 // User has many Posts && Post belongs to User
 User.hasMany(Post, {
@@ -47,4 +47,4 @@ Post.belongsTo(Category, {
 });
 
 
-module.exports = { User, Post, Comment, Category };
+module.exports = { User, Category, Post, Comment };
