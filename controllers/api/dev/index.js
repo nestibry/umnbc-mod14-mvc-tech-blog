@@ -3,10 +3,10 @@ const router = require('express').Router();
 
 const devUserRoutes = require('./devUserRoutes');
 const devCategoryRoutes = require('./devCategoryRoutes');
-// const devProductRoutes = require('./devProductRoutes');
+const devPostRoutes = require('./devPostRoutes');
 
 router.use('/users', devUserRoutes);
 router.use('/categories', devCategoryRoutes);
-// router.use('/products', devProductRoutes);
+router.use('/posts', devPostRoutes);
 
 module.exports = router;

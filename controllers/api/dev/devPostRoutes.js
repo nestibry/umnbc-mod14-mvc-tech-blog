@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { User, Category, Post, Comment  } = require('../../../models');
+const { User , Category, Post, Comment  } = require('../../../models');
 
 router.get('/', async (req, res) => {
     // Find all records and include other model data
     try {
-        const data = await User.findAll({
+        const data = await Post.findAll({
             // include: [{ model: Category }]
         });
         res.status(200).json(data);
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
-        const data = await User.findByPk(req.params.id, {
+        const data = await Post.findByPk(req.params.id, {
             // include: [{ model: Category }]
         });
         // Return an error if record not found
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     // create a new record
     try {
-        const data = await User.create(req.body);
+        const data = await Post.create(req.body);
         res.status(200).json(data);
     } catch (err) {
         res.status(400).json(err);
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     // update a record by its `id` value
     try {
-        const data = await User.update(req.body, {
+        const data = await Post.update(req.body, {
             where: { id: req.params.id }
         });
         // Return an error if data not found
@@ -64,7 +64,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     // delete a record by its `id` value
     try {
-        const data = await User.destroy({
+        const data = await Post.destroy({
             where: { id: req.params.id }
         });
         if (!data) {
