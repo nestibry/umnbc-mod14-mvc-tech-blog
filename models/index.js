@@ -5,12 +5,12 @@ const Comment = require('./Comment');
 
 // Category has many Posts && Post belongs to Category
 Category.hasMany(Post, {
-    foreignKey: 'category_id',
+    // foreignKey: 'category_id',
     onDelete: 'SET NULL',
 });
 
 Post.belongsTo(Category, {
-    foreignKey: 'category_id',
+    // foreignKey: 'category_id',
 });
 
 
