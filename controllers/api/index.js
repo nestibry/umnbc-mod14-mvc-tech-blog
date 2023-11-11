@@ -4,8 +4,9 @@ require('dotenv').config();
 
 router.use('/users', userRoutes);
 
+// For Development API calls
 if(process.env.NODE_ENV === 'dev'){
-    const devRoutes = require('./devRoutes');
+    const devRoutes = require('./dev');
     router.use('/dev', devRoutes);
 }
 
