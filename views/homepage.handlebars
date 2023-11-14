@@ -1,8 +1,19 @@
-{{!-- <section class="p-2 pt-4 pb-4"> --}}
 <section>
-
-    {{>post}}
-
+    {{#each posts as |post|}}
+    <div class="container">
+        <div class="col-12 mb-4">
+            <div class="card border-dark">
+                <h3 class="card-header text-bg-dark">{{post.title}}</h3>
+                <div class="card-body">
+                    <h5 class="card-text">Post.content</h5>
+                    <h5 class="card-text">Post.createdAt</h5>
+                    <h5 class="card-text">Post.category.title</h5>
+                    <h5 class="card-text">Post.comments[]</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
 </section>
 
 
@@ -10,11 +21,11 @@
 
 {{!-- {{#each users as |user| }}
 <div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{{get_emoji}}} {{user.name}}</h2>
-  </div>
-  <div class="col-md-6">
-    <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
-  </div>
+    <div class="col-md-6">
+        <h2>{{{get_emoji}}} {{user.name}}</h2>
+    </div>
+    <div class="col-md-6">
+        <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
+    </div>
 </div>
 {{/each}} --}}
