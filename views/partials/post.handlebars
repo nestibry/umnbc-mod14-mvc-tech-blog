@@ -1,12 +1,13 @@
 <div class="container">
     <div class="col-12 mb-4">
         <div class="card border-dark">
-            <h3 class="card-header text-bg-dark">Post.title</h3>
+            <div class="card-header text-bg-dark">
+                <h4>{{title}}</h4>
+                <h6 class="fst-italic">Posted by {{user.name}} on {{format_date createdAt}}</h6>
+            </div>
             <div class="card-body">
-                <h5 class="card-text">Post.content</h5>
-                <h5 class="card-text">Post.createdAt</h5>
-                <h5 class="card-text">Post.category.title</h5>
-                <h5 class="card-text">Post.comments[]</h5>
+                <p class="card-text">{{content}}</p>
+                <p class="card-text fst-italic">{{category.title}}</p>
             </div>
         </div>
     </div>
