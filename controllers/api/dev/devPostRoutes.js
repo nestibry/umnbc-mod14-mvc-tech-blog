@@ -12,6 +12,9 @@ router.get('/', async (req, res) => {
                 { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name','createdAt']}}
             ],
         });
+
+        const posts = data.map((post) => post.get({ plain: true }));
+        // console.table(posts);
         res.status(200).json(data);
     } catch (err) {
         res.status(500).json(err);
