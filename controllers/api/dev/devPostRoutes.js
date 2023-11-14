@@ -4,11 +4,7 @@ const { User, Category, Post, Comment } = require('../../../models');
 router.get('/', async (req, res) => {
     // Find all records and include other model data
     try {
-        const data = await Post.findAll({
-            // include: [{ model: Category }, {model: User}, {model: Comment}]
-            // attributes: ['title','content']
-            // attributes: {exclude:'category_id'}
-            
+        const data = await Post.findAll({            
             attributes: ['title', 'content'],
             include: [
                 { model: User, attributes: ['name'] },
@@ -27,13 +23,19 @@ router.get('/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
         const data = await Post.findByPk(req.params.id, {
-            // include: [{ model: Category }]
+            attributes: ['title', 'content'],
+            include: [
+                { model: User, attributes: ['name'] },
+                { model: Category, attributes: ['title'] },
+                { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name']}}
+            ],
         });
         // Return an error if record not found
         if (!data) {
             res.status(404).json({ message: 'Record ' + req.params.id + ' not found.' });
             return;
         }
+
         res.status(200).json(data);
     } catch (err) {
         res.status(500).json(err);
