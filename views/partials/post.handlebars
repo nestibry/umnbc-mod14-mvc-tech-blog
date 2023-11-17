@@ -1,15 +1,14 @@
-<!-- Current Weather Card  col-lg-6 -->
-<div class="col-12 mb-3 current-weather">
-    <div class="card border-dark">
-        <h3 class="card-header current-time">Current Date and Time</h3>
-        <div class="card-body">
-            <!-- <h5 class="card-text"><img class="current-icon" src="" alt="current-weather-icon"/></h5> -->
-            <img class="card-text current-icon" src="" alt="current-weather-icon" />
-            <h5 class="card-text">Temperature: <span class="current-temp"></span></h5>
-            <h5 class="card-text">Precipitation: <span class="current-pop"></span></h5>
-            <h5 class="card-text">Cloud Cover: <span class="current-clouds"></span></h5>
-            <h5 class="card-text">Wind Speed: <span class="current-wind"></span></h5>
-            <h5 class="card-text">Humidity: <span class="current-humidity"></span></h5>
+<div class="container">
+    <div class="col-12 mb-4">
+        <div class="card border-dark">
+            <div class="card-header text-bg-dark">
+                <h4>{{title}}</h4>
+                <h6 class="fst-italic">Posted by {{user.name}} on {{format_date createdAt}}</h6>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{content}}</p>
+                <p class="card-text fst-italic">{{category.title}}</p>
+            </div>
         </div>
     </div>
 </div>

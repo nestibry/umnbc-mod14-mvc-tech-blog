@@ -5,13 +5,16 @@ router.get('/', async (req, res) => {
     // Find all records and include other model data
     try {
         const data = await Post.findAll({            
-            attributes: ['title', 'content'],
+            attributes: ['title', 'content','createdAt','updatedAt'],
             include: [
                 { model: User, attributes: ['name'] },
                 { model: Category, attributes: ['title'] },
-                { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name']}}
+                { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name','createdAt']}}
             ],
         });
+
+        const posts = data.map((post) => post.get({ plain: true }));
+        // console.table(posts);
         res.status(200).json(data);
     } catch (err) {
         res.status(500).json(err);
@@ -23,11 +26,11 @@ router.get('/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
         const data = await Post.findByPk(req.params.id, {
-            attributes: ['title', 'content'],
+            attributes: ['title', 'content','createdAt','updatedAt'],
             include: [
                 { model: User, attributes: ['name'] },
                 { model: Category, attributes: ['title'] },
-                { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name']}}
+                { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name','createdAt']}}
             ],
         });
         // Return an error if record not found
