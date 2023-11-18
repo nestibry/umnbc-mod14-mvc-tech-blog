@@ -7,6 +7,19 @@ const cancelFormHandler = async (event) => {
 
 
 
+
+
+
 document
     .querySelector('.post-cancel')
+    .addEventListener('click', cancelFormHandler);
+
+
+document
+    .querySelector('.post-update')
+    .addEventListener('click', cancelFormHandler);
+
+
+document
+    .querySelector('.post-delete')
     .addEventListener('click', cancelFormHandler);
