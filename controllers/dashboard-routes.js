@@ -55,8 +55,8 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
         const post = data.get({plain:true});
 
         // Pass serialized data and session flag into template
-        res.status(200).json(post);
-        // res.render('dashboard', { posts, logged_in: req.session.logged_in });
+        // res.status(200).json(post);
+        res.render('edit-post', { post, logged_in: req.session.logged_in });
 
     } catch (err) {
         res.status(500).json(err);
