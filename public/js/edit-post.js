@@ -14,11 +14,26 @@ const updateFormHandler = async (event) => {
     // const category = document.querySelector('#post-category').value.trim();
 
     const formResponses = {
-        title : document.querySelector('#post-title').value.trim(),
-        content : document.querySelector('#post-content').value.trim(),
-        category : document.querySelector('#post-category').value.trim()
+        title: document.querySelector('#post-title').value.trim(),
+        content: document.querySelector('#post-content').value.trim(),
+        category_id: document.querySelector('#post-category').value.trim(),
     }
     console.log(formResponses);
+
+    // if (name && email && password) {
+    //     const response = await fetch('/api/users', {
+    //         method: 'POST',
+    //         body: JSON.stringify({ name, email, password }),
+    //         headers: { 'Content-Type': 'application/json' },
+    //     });
+
+    //     if (response.ok) {
+    //         document.location.replace('/dashboard');
+    //     } else {
+    //         alert(response.statusText);
+    //     }
+    // }
+
 
 }
 
