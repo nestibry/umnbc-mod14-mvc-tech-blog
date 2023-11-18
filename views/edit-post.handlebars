@@ -8,7 +8,7 @@
                 <div class="card h-100 border-dark">
                     <h4 class="card-header">Edit Post</h4>
                     <div class="card-body">
-                        <form class="login-form">
+                        <form class="edit-post-form">
                             {{!-- Title --}}
                             <div class="mb-3">
                                 <label for="post-title" class="form-label">Title</label>
@@ -20,7 +20,7 @@
                                 <textarea class="form-control" id="post-content" rows="10">{{content}}</textarea>
                             </div>
                             {{!-- Category --}}
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="post-category" class="form-label">Category</label>
                                 <select class="form-select" id="post-category"aria-label="Default select example">
                                     <option value="{{category.id}}"selected>{{category.title}}</option>
@@ -43,4 +43,4 @@
 
 
 
-{{!-- <script src="./js/login.js"></script> --}}
+<script src="/js/edit-post.js"></script>
