@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Category, Post, Comment } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
+const { withAuth } = require('../utils/auth');
 
 
 // Render the Dashboard by user_id
