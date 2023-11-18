@@ -52,7 +52,7 @@ router.get('/view/:id', async (req, res) => {
 });
 
 
-// Render the Dashboard
+// Render the Dashboard by user_id
 router.get('/user/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
@@ -74,9 +74,6 @@ router.get('/user/:id', async (req, res) => {
         }
 
         const posts = data.map((post) => post.get({ plain: true }));
-        
-    
-    
         
         // res.status(200).json(posts);
         res.render('dashboard', { posts, logged_in: req.session.logged_in });
