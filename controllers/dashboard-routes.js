@@ -49,7 +49,6 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
             ],
         });
         const categoryData = await Category.findAll({attributes: ['id','title']});
-        // console.log(categoryData);
         
         // Return an error if record not found
         if (!data || !categoryData) {
@@ -60,11 +59,8 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
         // Serialize data so the template can read it
         const post = data.get({plain:true});
         const categories = categoryData.map((category) => category.get({ plain: true }));
-        console.log(categories);
-        // const categories = categoryData.get({plain:true});
-
+    
         // Pass serialized data and session flag into template
-        // res.status(200).json(post);
         res.render('edit-post', { ...post, categories: categories, logged_in: req.session.logged_in });
 
     } catch (err) {
