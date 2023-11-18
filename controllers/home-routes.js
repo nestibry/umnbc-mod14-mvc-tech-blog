@@ -50,7 +50,7 @@ router.get('/post/:id', async (req, res) => {
         const post = data.get({ plain: true });
 
         // Pass serialized data and session flag into template
-        res.render('postpage', { ...post, comments: post.comments, logged_in: req.session.logged_in });
+        res.render('post-page', { ...post, comments: post.comments, logged_in: req.session.logged_in });
     } catch (err) {
         res.status(500).json(err);
     }
