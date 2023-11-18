@@ -41,18 +41,30 @@ router.get('/', withAuth, async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/edit-post/:id', withAuth, async (req, res) => {
     try {
+
+
         // Find the Posts by logged in user using session id
         const data = await Post.findByPk(req.params.id, {
             attributes: ['title', 'content','createdAt','updatedAt'],
             include: [
                 { model: Category, attributes: ['id','title'] },
+                { model: User, attributes: ['id']}
             ],
         });
+
         const categoryData = await Category.findAll({attributes: ['id','title']});
         
         // Return an error if record not found
         if (!data || !categoryData) {
             res.status(404).json({ message: 'Records not found.' });
+            return;
+        }
+
+        // Return 401-unauthorized error if logged_in user is not the post owner
+        console.log(data.user.id);
+        console.log(req.session.user_id);
+        if(req.session.user_id !== data.user.id){
+            res.status(401).json({ message: 'Unauthorized' });
             return;
         }
 
