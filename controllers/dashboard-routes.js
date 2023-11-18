@@ -36,4 +36,32 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
+router.get('/edit-post/:id', withAuth, async (req, res) => {
+    try {
+        // Find the Posts by logged in user using session id
+        const data = await Post.findByPk(req.params.id, {
+            attributes: ['title', 'content','createdAt','updatedAt'],
+            include: [
+                { model: Category, attributes: ['title'] },
+            ],
+        });
+        // Return an error if record not found
+        if (!data) {
+            res.status(404).json({ message: 'Record ' + req.params.id + ' not found.' });
+            return;
+        }
+
+        // Serialize data so the template can read it
+        const post = data.get({plain:true});
+
+        // Pass serialized data and session flag into template
+        res.status(200).json(post);
+        // res.render('dashboard', { posts, logged_in: req.session.logged_in });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 module.exports = router;
