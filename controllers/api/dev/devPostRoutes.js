@@ -52,6 +52,40 @@ router.get('/view/:id', async (req, res) => {
 });
 
 
+// Render the Dashboard
+router.get('/user/:id', async (req, res) => {
+    // Find record by ID and include other model data
+    try {
+        const data = await Post.findAll({
+            attributes: ['id','title', 'content','createdAt','updatedAt'],
+            include: [
+                // { model: User, attributes: ['name'] },
+                { model: Category, attributes: ['title'] },
+            ],
+            where: {
+                user_id: req.params.id
+            }
+        });
+
+        // Return an error if record not found
+        if (!data) {
+            res.status(404).json({ message: 'Record ' + req.params.id + ' not found.' });
+            return;
+        }
+
+        const posts = data.map((post) => post.get({ plain: true }));
+        
+    
+    
+        
+        // res.status(200).json(posts);
+        res.render('dashboard', { posts, logged_in: req.session.logged_in });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 router.get('/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
