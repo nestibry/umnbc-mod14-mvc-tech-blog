@@ -4,54 +4,43 @@
         <div class="row align-items-stretch justify-content-between">
 
             <!-- Login Card -->
-            <div class="col-12 col-lg-2 mb-3 flex-grow-1 forecast-card">
+            <div class="col-12 mb-3 flex-grow-1">
                 <div class="card h-100 border-dark">
-                    <h4 class="card-header">Login</h4>
+                    <h4 class="card-header">Edit Post</h4>
                     <div class="card-body">
                         <form class="login-form">
+                            {{!-- Title --}}
                             <div class="mb-3">
-                                <label for="email-login" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email-login">
+                                <label for="post-title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="post-title" value="{{title}}">
                             </div>
+                            {{!-- Content --}}
                             <div class="mb-3">
-                                <label for="password-login" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password-login">
+                                <label for="post-content" class="form-label">Content</label>
+                                <textarea class="form-control" id="post-content" rows="10">{{content}}</textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            {{!-- Category --}}
+                            <div class="mb-3">
+                                <label for="post-category" class="form-label">Category</label>
+                                <select class="form-select" id="post-category"aria-label="Default select example">
+                                    <option value="{{category.id}}"selected>{{category.title}}</option>
+                                    {{#each categories}}
+                                    <option value="{{id}}">{{title}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-outline-danger post-delete">Delete Post</button>
+                            <button type="submit" class="btn btn-outline-secondary post-update">Update Post</button>
+                            <button type="submit" class="btn btn-outline-primary post-cancel">Cancel</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Sign-up Card -->
-            <div class="col-12 col-lg-2 mb-3 flex-grow-1 forecast-card">
-                <div class="card h-100 border-dark">
-                    <h4 class="card-header">Sign-up</h4>
-                    <div class="card-body">
-                        <form class="signup-form">
-                            <div class="mb-3">
-                                <label for="name-signup" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="name-signup">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email-signup" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email-signup" aria-describedby="email-help">
-                                <div id="email-help" class="form-text">We'll never share your email with anyone else.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password-signup" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password-signup">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign-up and Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
-            
         </div>
 </section>
 
 
 
-<script src="./js/login.js"></script>
+{{!-- <script src="./js/login.js"></script> --}}
