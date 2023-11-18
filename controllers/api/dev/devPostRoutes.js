@@ -5,7 +5,7 @@ router.get('/', async (req, res) => {
     // Find all records and include other model data
     try {
         const data = await Post.findAll({            
-            attributes: ['title', 'content','createdAt','updatedAt'],
+            attributes: ['id', 'title', 'content','createdAt','updatedAt'],
             include: [
                 { model: User, attributes: ['name'] },
                 { model: Category, attributes: ['title'] },
