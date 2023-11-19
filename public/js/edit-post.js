@@ -14,24 +14,30 @@ const updateFormHandler = async (event) => {
     // const category = document.querySelector('#post-category').value.trim();
 
     const formResponses = {
+        id: document.querySelector('#post-id').value.trim(),
         title: document.querySelector('#post-title').value.trim(),
         content: document.querySelector('#post-content').value.trim(),
         category_id: document.querySelector('#post-category').value.trim(),
     }
     console.log(formResponses);
 
-    // if (name && email && password) {
-    //     const response = await fetch('/api/users', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ name, email, password }),
-    //         headers: { 'Content-Type': 'application/json' },
-    //     });
+    if (!formResponses.title || !formResponses.content) {
+        alert('All fields are required to update the post.');
+        return;
+    }
 
-    //     if (response.ok) {
-    //         document.location.replace('/dashboard');
-    //     } else {
-    //         alert(response.statusText);
-    //     }
+    // if (formResponses.title && formResponses.content) {
+        const response = await fetch('/api/posts/1', {
+            method: 'PUT',
+            body: JSON.stringify(formResponses),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert(response.statusText);
+        }
     // }
 
 

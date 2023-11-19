@@ -45,7 +45,7 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
 
         // Find the Posts by logged in user using session id
         const data = await Post.findByPk(req.params.id, {
-            attributes: ['title', 'content','createdAt','updatedAt'],
+            attributes: ['id','title', 'content','createdAt','updatedAt'],
             include: [
                 { model: Category, attributes: ['id','title'] },
                 { model: User, attributes: ['id']}

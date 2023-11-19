@@ -9,6 +9,11 @@
                     <h4 class="card-header">Edit Post</h4>
                     <div class="card-body">
                         <form class="edit-post-form">
+                            {{!-- ID --}}
+                            <div class="mb-3">
+                                <label for="post-id" class="form-label">Post ID</label>
+                                <input type="text" class="form-control" id="post-id" value="{{id}}" disabled readonly>
+                            </div>
                             {{!-- Title --}}
                             <div class="mb-3">
                                 <label for="post-title" class="form-label">Title</label>
