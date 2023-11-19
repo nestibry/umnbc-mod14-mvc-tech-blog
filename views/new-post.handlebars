@@ -21,14 +21,14 @@
                             {{!-- Category --}}
                             <div class="mb-4">
                                 <label for="post-category" class="form-label">Category</label>
-                                <select class="form-select" id="post-category"aria-label="Default select example">
+                                <select class="form-select" id="post-category" aria-label="Default select example">
                                     {{#each categories}}
                                     <option value="{{id}}">{{title}}</option>
                                     {{/each}}
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-outline-secondary post-cancel">Cancel</button>
-                            <button type="submit" class="btn btn-outline-primary post-create">Create Post</button>
+                            <button type="submit" class="col-12 btn btn-outline-primary mb-2 mt-2 post-create">Create Post</button>
+                            <button type="submit" class="col-12 btn btn-outline-secondary mb-2 mt-2 post-cancel">Cancel</button>
                         </form>
                     </div>
                 </div>
