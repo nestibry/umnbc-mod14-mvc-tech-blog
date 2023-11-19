@@ -22,7 +22,7 @@
                             {{!-- Content --}}
                             <div class="mb-3">
                                 <label for="post-content" class="form-label">Content</label>
-                                <textarea class="form-control" id="post-content" rows="10">{{content}}</textarea>
+                                <textarea class="form-control" id="post-content" rows="7">{{content}}</textarea>
                             </div>
                             {{!-- Category --}}
                             <div class="mb-4">
@@ -34,9 +34,9 @@
                                     {{/each}}
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-outline-danger post-delete">Delete Post</button>
-                            <button type="submit" class="btn btn-outline-secondary post-update">Update Post</button>
-                            <button type="submit" class="btn btn-outline-primary post-cancel">Cancel</button>
+                            <button type="submit" class="col-12 mb-2 btn btn-outline-primary post-cancel">Cancel</button>
+                            <button type="submit" class="col-12 mb-2 btn btn-outline-warning post-update">Update Post</button>
+                            <button type="submit" class="col-12 mb-2 btn btn-outline-danger post-delete">Delete Post</button>
                         </form>
                     </div>
                 </div>
