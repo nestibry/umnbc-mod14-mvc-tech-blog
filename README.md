@@ -15,6 +15,7 @@ A CMS-style blog site to publish articles, blog posts, and thoughts. The app fol
 
 ## Usage
 
+#### Deployed Site: https://mysterious-basin-27960-f7cf6f2edc30.herokuapp.com/
 #### Demo Video
 
 [![A video thumbnail shows the application with a play button overlaying the view.](./_challenge_info/Assets/14-mvc-homework-demo-01.gif)](https://drive.google.com/file/d/1gSIk0f-nTdhPcgkUQjwK50iPHKZmVkEx/view)
