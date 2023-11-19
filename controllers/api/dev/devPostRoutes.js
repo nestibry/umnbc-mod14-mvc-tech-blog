@@ -142,6 +142,7 @@ router.delete('/:id', async (req, res) => {
         const data = await Post.destroy({
             where: { id: req.params.id }
         });
+        
         if (!data) {
             res.status(404).json({ message: 'Record ' + req.params.id + ' not found.' });
             return;

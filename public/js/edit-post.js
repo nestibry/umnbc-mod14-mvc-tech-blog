@@ -38,8 +38,26 @@ const updateFormHandler = async (event) => {
 }
 
 
+const deleteFormHandler = async (event) => {
+    event.preventDefault();
 
+    const post_id = document.querySelector('#post-id').value.trim();
 
+    console.log(post_id);
+
+    // Update Post content
+    const response = await fetch(`/api/posts/${post_id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    // Display dashboard if okay
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
+}
 
 
 document
@@ -54,4 +72,4 @@ document
 
 document
     .querySelector('.post-delete')
-    .addEventListener('click', cancelFormHandler);
+    .addEventListener('click', deleteFormHandler);
