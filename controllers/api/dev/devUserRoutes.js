@@ -18,7 +18,8 @@ router.get('/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
         const data = await User.findByPk(req.params.id, {
-            // include: [{ model: Category }]
+            attributes: { exclude: ['password'] },
+            include: [{ model: Post }],
         });
         // Return an error if record not found
         if (!data) {

@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const { User, Category, Post, Comment } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
+const { withAuth } = require('../utils/auth');
 
 
 router.get('/', async (req, res) => {
     try {
         // Get all RECORDS and JOIN with other data
         const data = await Post.findAll({
-            attributes: ['id','title', 'content', 'createdAt', 'updatedAt'],
+            attributes: ['id', 'title', 'content', 'createdAt', 'updatedAt'],
             include: [
                 { model: User, attributes: ['name'] },
                 { model: Category, attributes: ['title'] },
@@ -32,11 +33,11 @@ router.get('/post/:id', async (req, res) => {
     // Find record by ID and include other model data
     try {
         const data = await Post.findByPk(req.params.id, {
-            attributes: ['id','title', 'content','createdAt','updatedAt'],
+            attributes: ['id', 'title', 'content', 'createdAt', 'updatedAt'],
             include: [
                 { model: User, attributes: ['name'] },
                 { model: Category, attributes: ['title'] },
-                { model: Comment, attributes: ['content'], include: {model: User, attributes: ['name','createdAt']}}
+                { model: Comment, attributes: ['content'], include: { model: User, attributes: ['name', 'createdAt'] } }
             ],
         });
         // Return an error if record not found
@@ -46,32 +47,10 @@ router.get('/post/:id', async (req, res) => {
         }
 
         // Serialize data so the template can read it
-        const post = data.get({plain: true});
+        const post = data.get({ plain: true });
 
         // Pass serialized data and session flag into template
-        res.render('postpage', { ...post, comments: post.comments, logged_in: req.session.logged_in });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-// Use withAuth middleware to prevent access to route
-router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-        // // Find the logged in user based on the session ID
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Post }],
-        });
-
-        const user = userData.get({ plain: true });
-        console.log(user);
-
-        res.render('dashboard', {
-            ...user,
-            logged_in: true
-        });
-
+        res.render('post-page', { ...post, comments: post.comments, logged_in: req.session.logged_in });
     } catch (err) {
         res.status(500).json(err);
     }

@@ -1,8 +1,12 @@
 const router = require('express').Router();
-const userRoutes = require('./user-routes');
 require('dotenv').config();
 
+const userRoutes = require('./user-routes');
+const postRoutes = require('./post-routes');
+
+
 router.use('/users', userRoutes);
+router.use('/posts', postRoutes);
 
 // For Development API calls
 if(process.env.NODE_ENV === 'dev'){
