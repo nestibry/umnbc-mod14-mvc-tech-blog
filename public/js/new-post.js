@@ -21,19 +21,19 @@ const createFormHandler = async (event) => {
         return;
     }
 
-    // // Update Post content
-    // const response = await fetch(`/api/posts/${formResponse.id}`, {
-    //     method: 'PUT',
-    //     body: JSON.stringify(formResponse),
-    //     headers: { 'Content-Type': 'application/json' },
-    // });
+    // Create New Post content
+    const response = await fetch(`/api/posts`, {
+        method: 'POST',
+        body: JSON.stringify(formResponse),
+        headers: { 'Content-Type': 'application/json' },
+    });
 
-    // // Display dashboard if okay
-    // if (response.ok) {
-    //     document.location.replace('/dashboard');
-    // } else {
-    //     alert(response.statusText);
-    // }
+    // Display dashboard if okay
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
 }
 
 

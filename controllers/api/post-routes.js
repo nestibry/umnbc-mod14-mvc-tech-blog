@@ -1,7 +1,18 @@
 const router = require('express').Router();
 const { User, Category, Post, Comment } = require('../../models');
 
-
+router.post('/', async (req, res) => {
+    // create a new record
+    try {
+        const data = await Post.create({
+            ...req.body,
+            user_id: req.session.user_id
+        });
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 router.put('/:id', async (req, res) => {
     // update a record by its `id` value
