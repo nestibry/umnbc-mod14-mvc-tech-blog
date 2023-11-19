@@ -8,24 +8,25 @@ const cancelFormHandler = async (event) => {
 }
 
 
-const createFormHandler = async (event) => {
+const submitFormHandler = async (event) => {
     event.preventDefault();
+
+    const id = document.querySelector('#post-id').value.trim();
 
     // Get form responses
     const formResponse = {
-        title: document.querySelector('#post-title').value.trim(),
-        content: document.querySelector('#post-content').value.trim(),
-        category_id: document.querySelector('#post-category').value.trim(),
+        post_id: id,
+        content: document.querySelector('#comment-content').value.trim(),
     }
     console.log(formResponse);
     // Require inputs for title and content // Form is not validating the required fields, probably has to do with the query selector handler on click and not submit on the form
-    if (!formResponse.title || !formResponse.content) {
+    if (!formResponse.content) {
         alert('All fields are required to create the post.');
         return;
     }
 
     // Create New Post content
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/comments`, {
         method: 'POST',
         body: JSON.stringify(formResponse),
         headers: { 'Content-Type': 'application/json' },
@@ -33,7 +34,7 @@ const createFormHandler = async (event) => {
 
     // Display dashboard if okay
     if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace(`/post/${id}`);
     } else {
         alert(response.statusText);
     }
@@ -50,6 +51,6 @@ document
 
 document
     .querySelector('.comment-submit')
-    .addEventListener('click', cancelFormHandler);
+    .addEventListener('click', submitFormHandler);
 
 
