@@ -28,13 +28,13 @@
                             <h5>Home</h5>
                         </a>
                     </li>
-                    {{!-- Conditionally render login or logout links --}}
-                    {{#if logged_in}}
                     <li class="nav-item">
                         <a class="nav-link" href="/dashboard">
                             <h5>Dashboard</h5>
                         </a>
                     </li>
+                    {{!-- Conditionally render login or logout links --}}
+                    {{#if logged_in}}
                     <li class="nav-item">
                         <a class="nav-link" id="logout" href="/login">
                             <h5>Logout</h5>
