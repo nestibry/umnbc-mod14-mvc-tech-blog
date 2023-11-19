@@ -1,7 +1,7 @@
 # MVC: The Tech Blog
 *University of Minnesota - Coding Boot Camp - Module 14 MVC Challenge*
 
-![](https://img.shields.io/badge/License-MIT_License-blue)
+[![](https://img.shields.io/badge/License-MIT_License-blue)](https://choosealicense.com/licenses/mit/)
 
 ## Description
 
