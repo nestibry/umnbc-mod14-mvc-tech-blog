@@ -37,6 +37,31 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
+// Render the New-Post form
+// Use withAuth middleware to prevent access to route
+router.get('/new-post', withAuth, async (req, res) => {
+    try {
+        // Find the categories that the post can be linked to
+        const categoryData = await Category.findAll({attributes: ['id','title']});
+        
+        // Return an error if record not found
+        if (!categoryData) {
+            res.status(404).json({ message: 'Records not found.' });
+            return;
+        }
+
+        // Serialize data so the template can read it
+        const categories = categoryData.map((category) => category.get({ plain: true }));
+    
+        // Pass serialized data and session flag into template
+        res.render('new-post', {categories: categories, logged_in: req.session.logged_in });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 // Render the Edit-Post form by post_id
 // Use withAuth middleware to prevent access to route
 router.get('/edit-post/:id', withAuth, async (req, res) => {
@@ -79,6 +104,7 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 
 module.exports = router;
